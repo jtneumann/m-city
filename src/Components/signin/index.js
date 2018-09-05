@@ -79,6 +79,14 @@ class SignIn extends Component {
             ).then(()=>{
                 this.props.history.push('/dashboard')
             }).catch(error =>{
+                var errorCode = error.code;
+                var errorMessage = error.message;
+                if (errorCode === 'auth/wrong-password') {
+                    alert('Invalid password.');
+                } else {
+                    alert(errorMessage);
+                }
+                console.log(error);
                 this.setState({
                     formError:true
                 })
