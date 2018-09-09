@@ -94,6 +94,22 @@ class AddEditPlayers extends Component {
         }
     }
 
+    updateFields = (player, playerId, formType, defaultImg) => {
+        const newFormData = {...this.state.formdata}
+
+        for (let key in newFormData) {
+            newFormData[key].value = player[key];
+            newFormData[key].valid = true;       
+        }
+
+        this.setState({
+            playerId,
+            defaultImg,
+            formType,
+            formdata:newFormData
+        })
+    }
+
     componentDidMount() {
         const playerId = this.props.match.params.id;
 
@@ -102,7 +118,21 @@ class AddEditPlayers extends Component {
                 formType:'Add Player'
             })
         } else {
-            
+            firebaseDB.ref(`players/${playerId}`).once('value')
+            .then(snapshot => {
+                const playerData = snapshot.val();
+
+                firebase.storage().ref('players')
+                .child(playerData.image).getDownloadURL()
+                .then( url => {
+                    this.updateFields(playerData,playerId,'Edit Player', url)
+                }).catch(e => {
+                    this.updateFields({
+                        ...playerData,
+                        image:''
+                    }, playerId, 'Edit Player')
+                })
+            })
         }
     }
     
@@ -132,6 +162,17 @@ class AddEditPlayers extends Component {
         })
     }
 
+    successForm = (message) => {
+        this.setState({
+            formSuccess:message
+        });
+        setTimeout(() => {
+            this.setState({
+                formSuccess:''
+            })
+        }, 2000);
+    }
+
     submitForm(event){
         event.preventDefault();
 
@@ -146,7 +187,12 @@ class AddEditPlayers extends Component {
         if (formIsValid) {
             //submit form
             if (this.state.formType === 'Edit Player') {
-                
+                firebaseDB.ref(`players/${this.state.playerId}`)
+                .update(dataToSubmit).then(()=>{
+                    this.successForm('Updated Successfully');
+                }).catch(e=>{
+                    this.setState({formError:true})
+                })
             } else {
                 firebasePlayers.push(dataToSubmit).then(()=>{
                     this.props.history.push('/admin_players')
