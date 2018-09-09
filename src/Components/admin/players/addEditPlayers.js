@@ -158,7 +158,7 @@ class AddEditPlayers extends Component {
     render() {
         return (
             <AdminLayout>
-                <div className="editplayers_dialog_wrapper label_inputs">
+                <div className="editplayers_dialog_wrapper">
                     <h2>
                         {this.state.formType}
                     </h2>
