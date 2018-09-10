@@ -41,7 +41,7 @@ class AddEditPlayers extends Component {
                     type:'text',
                 },
                 validation:{
-                    required:true,
+                    required:true
                 },
                 valid:false,
                 validationMessage:'',
@@ -130,7 +130,7 @@ class AddEditPlayers extends Component {
                     this.updateFields({
                         ...playerData,
                         image:''
-                    }, playerId, 'Edit Player')
+                    }, playerId, 'Edit Player','')
                 })
             })
         }
@@ -238,8 +238,8 @@ class AddEditPlayers extends Component {
                                 tag={"Player image"}
                                 defaultImg={this.state.defaultImg}
                                 defaultImgName={this.state.formdata.image.value}
-                                resetImage={()=>this.resetImage()}
-                                filename={(filename)=>this.storeFilename(filename)}
+                                resetImage={()=> this.resetImage()}
+                                filename={(filename)=> this.storeFilename(filename)}
                             />
                             <FormField
                                 id={'name'}
@@ -270,7 +270,7 @@ class AddEditPlayers extends Component {
                                 null
                             }
                             <div className="admin_submit">
-                                <button onClick={(event)=>this.submitForm(event)}>
+                                <button onClick={(event)=> this.submitForm(event)}>
                                     {this.state.formType}
                                 </button>
                             </div>

@@ -6,7 +6,7 @@ import Stripes from '../../Resources/images/stripes.png';
 import { firebasePlayers, firebase } from '../../firebase';
 import { firebaseLooper } from '../ui/misc';
 import { Promise } from 'core-js';
-import { isNonNullObject } from '@firebase/util';
+
 
 class TheTeam extends Component {
 
@@ -18,6 +18,7 @@ class TheTeam extends Component {
     componentDidMount() {
         firebasePlayers.once('value').then(snapshot => {
             const players = firebaseLooper(snapshot);
+            console.log(players)
             let promises = [];
            for (let key in players) {
                    promises.push(
@@ -73,13 +74,13 @@ class TheTeam extends Component {
                             <div className="team_category_wrapper">
                                 <div className="title">Keepers</div>
                                 <div className="team_cards">
-                                    {this.showplayersByCategory('keeper')}
+                                    {this.showplayersByCategory('Keeper')}
                                 </div>
                             </div>
                             <div className="team_category_wrapper">
                                 <div className="title">Defense</div>
                                 <div className="team_cards">
-                                    {this.showplayersByCategory('Defence')}
+                                    {this.showplayersByCategory('Defense')}
                                 </div>
                             </div>
                             <div className="team_category_wrapper">

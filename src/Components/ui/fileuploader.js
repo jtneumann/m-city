@@ -17,19 +17,21 @@ class Fileuploader extends Component {
         })
     }
 
-    handleUploadError = (error) => {
+    handleUploadError = () => {
         this.setState({
             isUploading:false
         });
-        console.error(error)
     }
 
     handleUploadSuccess = (filename) => {
+
+        console.log(filename)
+
         this.setState({
             name:filename,
             isUploading:false
-        })
-
+        });
+ 
         firebase.storage().ref(this.props.dir)
         .child(filename).getDownloadURL()
         .then( url => {
@@ -42,8 +44,8 @@ class Fileuploader extends Component {
     static getDerivedStateFromProps(props,state){
         if(props.defaultImg){
             return state = {
-                name: this.props.defaultImgName,
-                fileURL: props.defaultImg
+                name:props.defaultImgName,
+                fileURL:props.defaultImg
             }
         }
         return null
@@ -62,13 +64,9 @@ class Fileuploader extends Component {
     render() {
         return (
             <div>
-                {!this.state.fileURL ?
+                { !this.state.fileURL ?
                     <div>
                         <div className="label_inputs">{this.props.tag}</div>
-                        <label
-                            style={{backgroundColor:'steelblue',color:'white',padding:10,borderRadius:4, pointer:'cursor'}}
-                        >
-                        Upload Image...
                         <FileUploader
                             accept="image/*"
                             name="image"
@@ -78,7 +76,7 @@ class Fileuploader extends Component {
                             onUploadError={ this.handleUploadError }
                             onUploadSuccess={ this.handleUploadSuccess }
                         />
-                        </label>
+                      
                     </div>
                 :null}
                 {

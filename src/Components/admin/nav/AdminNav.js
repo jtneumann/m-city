@@ -43,9 +43,9 @@ const AdminNav = () => {
     const logoutHandler = () => {
         firebase.auth().signOut().then(()=>{
             console.log('log out successful')
-        }),(error)=>{
+        },(error)=>{
             console.log("Error logging out")
-        }
+        })
     }
 
     return (
