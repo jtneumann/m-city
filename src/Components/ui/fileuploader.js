@@ -17,11 +17,11 @@ class Fileuploader extends Component {
         })
     }
 
-    handleUploadError = () => {
+    handleUploadError = (error) => {
         this.setState({
             isUploading:false
         });
-
+        console.error(error)
     }
 
     handleUploadSuccess = (filename) => {
@@ -65,6 +65,10 @@ class Fileuploader extends Component {
                 {!this.state.fileURL ?
                     <div>
                         <div className="label_inputs">{this.props.tag}</div>
+                        <label
+                            style={{backgroundColor:'steelblue',color:'white',padding:10,borderRadius:4, pointer:'cursor'}}
+                        >
+                        Upload Image...
                         <FileUploader
                             accept="image/*"
                             name="image"
@@ -74,6 +78,7 @@ class Fileuploader extends Component {
                             onUploadError={ this.handleUploadError }
                             onUploadSuccess={ this.handleUploadSuccess }
                         />
+                        </label>
                     </div>
                 :null}
                 {

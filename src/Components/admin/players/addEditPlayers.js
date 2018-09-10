@@ -148,10 +148,10 @@ class AddEditPlayers extends Component {
         }
         
 
-        let vaildData = validate(newElement)
+        let validData = validate(newElement)
 
-        newElement.valid = vaildData[0];
-        newElement.validationMessage = vaildData[1];
+        newElement.valid = validData[0];
+        newElement.validationMessage = validData[1];
         newFormData[element.id] = newElement;
 
         console.log(newFormData)
@@ -261,8 +261,8 @@ class AddEditPlayers extends Component {
                                 formdata={this.state.formdata.position}
                                 change={(element)=> this.updateForm(element)}
                             />
-                             <div className="success_label">{this.state.formSuccess}</div>
-                            {this.state.formError ? 
+                            <div className="success_label">{this.state.formSuccess}</div>
+                            { this.state.formError ? 
                                 <div className="error_label">
                                     Oops, something went wrong...
                                 </div>
