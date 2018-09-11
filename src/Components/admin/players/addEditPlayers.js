@@ -154,8 +154,6 @@ class AddEditPlayers extends Component {
         newElement.validationMessage = validData[1];
         newFormData[element.id] = newElement;
 
-        console.log(newFormData)
-
         this.setState({
             formError: false,
             formdata: newFormData

@@ -179,8 +179,6 @@ class AddEditMatch extends Component {
         newElement.validationMessage = vaildData[1];
         newFormData[element.id] = newElement;
 
-        console.log(newFormData)
-
         this.setState({
             formError: false,
             formdata: newFormData
@@ -200,7 +198,6 @@ class AddEditMatch extends Component {
                 newFormdata[key].config.options = teamOptions;
             }
         }
-        console.log(newFormdata)
         this.setState({
             matchId,
             formType:type,

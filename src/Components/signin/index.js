@@ -54,8 +54,6 @@ class SignIn extends Component {
         newElement.validationMessage = vaildData[1];
         newFormData[element.id] = newElement;
 
-        console.log(newFormData)
-
         this.setState({
             formError: false,
             formdata: newFormData

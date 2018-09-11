@@ -18,7 +18,7 @@ class TheTeam extends Component {
     componentDidMount() {
         firebasePlayers.once('value').then(snapshot => {
             const players = firebaseLooper(snapshot);
-            console.log(players)
+         
             let promises = [];
            for (let key in players) {
                    promises.push(
@@ -61,7 +61,7 @@ class TheTeam extends Component {
     )
     
     render() {
-        console.log(this.state.players)
+       
         return (
             <div className="the_team_container"
                 style={{
