@@ -5,6 +5,8 @@
   "dependencies": {
     "@material-ui/core": "^1.4.3",
     "d3-ease": "^1.0.3",
+    "dotenv": "^6.0.0",
+    "dotenv-webpack": "^1.5.7",
     "firebase": "^5.0.4",
     "react": "^16.4.2",
     "react-dom": "^16.4.2",
@@ -15,6 +17,7 @@
     "react-scripts": "1.1.5"
   },
   "scripts": {
+    "dev": "npm run dev",
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test --env=jsdom",
