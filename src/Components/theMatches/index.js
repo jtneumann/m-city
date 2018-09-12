@@ -6,7 +6,7 @@ import { firebaseLooper, reverseArray } from '../ui/misc';
 
 import LeagueTable from './table';
 import MatchesList from './matchesList';
-import { stat } from 'fs';
+
 
 class TheMatches extends Component {
 

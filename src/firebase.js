@@ -5,12 +5,12 @@ import 'firebase/auth';
 import 'firebase/storage';
 
 const config = {
-    apiKey: "AIzaSyDJ6ATLvcZlu3P-voXUQERlzls2TMoeoF0",
-    authDomain: "m-city-cc64b.firebaseapp.com",
-    databaseURL: "https://m-city-cc64b.firebaseio.com",
-    projectId: "m-city-cc64b",
-    storageBucket: "m-city-cc64b.appspot.com",
-    messagingSenderId: "768222323495"
+    apiKey: process.env.API_KEY,
+    authDomain: process.env.AUTH_DOMAIN,
+    databaseURL: process.env.DATABASE_URL,
+    projectId: process.env.PROJECT_ID,
+    storageBucket: process.env.STORAGE_BUCKET,
+    messagingSenderId: process.env.MESSAGING_SENDER_ID
   };
 
   firebase.initializeApp(config);
